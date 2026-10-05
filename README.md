@@ -111,9 +111,9 @@ mvn exec:java "-Dexec.mainClass=com.employeedepartment.App"
 - merge() – Update/merge entity state
 - remove() – Delete data
 - createQuery() – Execute JPQL queries
+
+
 👨‍💻 Author
 VINAY BABANNAVAR
 AF ID: AF04997689
 Batch Code: ANP-D6741
-🔗 GitHub
-Employee–Department Management System
