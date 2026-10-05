@@ -1,77 +1,119 @@
-# Employee-Department-Management-System
+# Employee–Department Management System
 
-## Employee–Department Management System
+A console-based Java application for managing employees and departments using **JPA, Hibernate, MySQL, and Maven**.
 
-A Java-based Employee–Department Management System developed using **Plain JPA, Hibernate, MySQL, and Maven**.
+## 🛠️ Technologies Used
 
-The application demonstrates a **bidirectional One-to-Many / Many-to-One relationship** between departments and employees using JPA annotations and provides CRUD and update operations through a console-based menu.
+![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk)
+![Hibernate](https://img.shields.io/badge/Hibernate-ORM-59666C?style=for-the-badge&logo=hibernate)
+![JPA](https://img.shields.io/badge/JPA-Jakarta%20Persistence-blue?style=for-the-badge)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven)
+![VS Code](https://img.shields.io/badge/VS%20Code-Editor-007ACC?style=for-the-badge&logo=visualstudiocode)
 
----
-
-## 1. Project Overview
-
-The Employee–Department Management System is a console-based Java application designed to manage departments and employees.
-
-The system allows users to:
+## ✨ Features
 
 - Add departments
 - Add employees
 - Assign employees to departments
-- Display employees with their departments
-- Display departments with their employees
-- Update an employee's department
+- Display employees with departments
+- Display departments with employees
+- Update employee department
 - Update employee details
-- Merge employee entities
-- Delete employees
-- Store and retrieve data using MySQL
-- Perform database operations using JPA and Hibernate
+- Merge employee
+- Delete employee
+- MySQL database integration
 
----
+## 🔗 JPA Relationship
 
-## 2. Technologies Used
-
-| Technology | Purpose |
-|------------|---------|
-| Java 17 | Application development |
-| Maven | Project and dependency management |
-| JPA | Persistence API |
-| Hibernate | JPA implementation / ORM |
-| MySQL | Database |
-| Jakarta Persistence | JPA annotations and APIs |
-| JPQL | Database query operations |
-| VS Code | Development environment |
-
----
-
-## 3. Project Structure
+The project uses a **bidirectional One-to-Many / Many-to-One relationship**.
 
 ```text
-employee-department-management/
-│
-├── pom.xml
-│
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── employeedepartment/
-│   │   │           ├── App.java
-│   │   │           ├── DepartmentDAO.java
-│   │   │           ├── EmployeeDAO.java
-│   │   │           ├── JPAUtil.java
-│   │   │           │
-│   │   │           └── entity/
-│   │   │               ├── Department.java
-│   │   │               └── Employee.java
-│   │   │
-│   │   └── resources/
-│   │       └── META-INF/
-│   │           └── persistence.xml
+Department
+    │
+    │ One-to-Many
+    ▼
+Employee
+    │
+    │ Many-to-One
+    ▼
+Department
+
+Department
+@OneToMany(mappedBy = "department")
+private List<Employee> employees;
+
+Employee
+@ManyToOne
+@JoinColumn(name = "department_id")
+private Department department;
+
+📂 Project Structure
+src/
+├── main/
+│   ├── java/
+│   │   └── com/employeedepartment/
+│   │       ├── App.java
+│   │       ├── DepartmentDAO.java
+│   │       ├── EmployeeDAO.java
+│   │       ├── JPAUtil.java
+│   │       └── entity/
+│   │           ├── Department.java
+│   │           └── Employee.java
 │   │
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── employeedepartment/
-│                   └── AppTest.java
+│   └── resources/
+│       └── META-INF/
+│           └── persistence.xml
 │
-└── README.md
+└── test/
+    └── java/
+        └── com/employeedepartment/
+            └── AppTest.java
+
+pom.xml
+README.md
+
+🗄️ Database
+Database:
+EMPLOYEE_DB
+
+Tables:
+departments
+employees
+
+The employees.department_id column is the foreign key connecting employees with departments.
+▶️ Run the Project
+1. Clone Repository
+git clone https://github.com/vinaybabannavar-create/Employee-Department-Management-System.git
+
+2. Open Project
+cd Employee-Department-Management-System
+
+3. Compile
+mvn clean compile
+
+4. Run
+mvn exec:java "-Dexec.mainClass=com.employeedepartment.App"
+
+📋 Application Menu
+1. Add Department
+2. Add Employee
+3. Display Employees with Department
+4. Display Departments with Employees
+5. Update Employee Department
+6. Update Employee Details
+7. Delete Employee
+8. Exit
+
+🔧 JPA Operations Used
+- persist() – Insert data
+- find() – Retrieve data
+- merge() – Update/merge entity state
+- remove() – Delete data
+- createQuery() – Execute JPQL queries
+👨‍💻 Author
+VINAY BABANNAVAR
+AF ID: AF04997689
+Batch Code: ANP-D6741
+🔗 GitHub
+Employee–Department Management System
